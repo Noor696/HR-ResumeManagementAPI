@@ -73,7 +73,7 @@ REST_FRAMEWORK = {
 # https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
 # here can customize a lot of information about tokens
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5), # we can increase the access time but 5 min is good.
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=24), # we can increase the access time but 5 min is good.
     "REFRESH_TOKEN_LIFETIME": timedelta(days=90),  # use the refresh token to update the access token  
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -212,9 +212,10 @@ else:
 # the cors set up from documentation in the Link:
 # https://github.com/adamchainz/django-cors-headers/blob/main/README.rst
 
-# CORS_ALLOW_ALL_ORIGIN = True
-# OR for more security
+# To allow all origins (not recommended for production):
+CORS_ALLOW_ALL_ORIGINS = True
 
+# OR, to allow specific origins:
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
