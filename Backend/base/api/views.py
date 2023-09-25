@@ -13,6 +13,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         # Add custom claims
         token['username'] = user.username
+        token['is_superuser'] = user.is_superuser  # Add the user's rule to the token
         # ...
  
         return token
@@ -26,7 +27,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def getRoutes(request):
     routes = [
         '/api/token',  
-         '/api/token/refresh',
+        '/api/token/refresh',
     ]
 
     return Response(routes)

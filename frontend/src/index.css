@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#REGISTERButton {
+  /* background:#ff7f0e ; */
+  background-color: transparent;
+  color: #ffb609;
+  border-radius: 1px;
+  padding: 8px 20px;
+  border: 1px solid #ffb609;
+  transition: all 0.3s ease-out;
+  margin-top: 1rem;
+}
+
+#REGISTERButton:hover {
+transition: all 0.3s ease-out;
+background: #ffb609;
+color: #242424;
+transition: 250ms;
+}
