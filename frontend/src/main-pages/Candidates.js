@@ -1,18 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Candidates.css'
-import { Table } from 'react-bootstrap'
+import { Button, Table } from 'react-bootstrap'
 import axios from 'axios'
+import AuthContext from '../context/AuthContext';
+import DownloadFileModal from '../components/Modals/DownloadFileModal';
+
 
 function Candidates() {
   const [candidateList, setCandidateList] = useState('')
+  let {user, authTokens, logoutUser} = useContext(AuthContext)
 
   useEffect(()=>{
     getCandidateList()
   },[])
 
+  // axios.get(url, auth);
+  console.log('authTokens',authTokens)
   const getCandidateList = async () => {
+    let auth = { headers: { Authorization: `Bearer ${authTokens.access}` } };
     try{
-      const responce = await axios.get(`http://127.0.0.1:8000/candidate/list/`);
+      const responce = await axios.get(`http://127.0.0.1:8000/candidate/list/`,
+      auth
+      );
       setCandidateList(responce.data);
       // setIsLoading(false);
       console.log(responce.data)
@@ -22,18 +31,6 @@ function Candidates() {
     }
   }
 
-  // const getMerchantData = async () => {
-  //   try{
-  //     const responce = await Axios.get(`/onboarding-team/retrieve-merchants`);
-  //     setMerchantList(responce.data);
-  //     setIsLoading(false);
-  //     // console.log(responce.data)
-  //     setresetLoading(false)
-      
-  //   }catch (error){
-  //     console.error('Error fetching Merchant Data:', error);
-  //   }
-  // }
   return (
     <div className='candidate-container'>
       <div className='Can-header'>
@@ -50,22 +47,26 @@ function Candidates() {
             <th>Years Of Experience</th>
             <th>department</th>
             <th>resume</th>
+            <th>Download resume</th>
           </tr>
         </thead>
         <tbody>
           {candidateList.length > 0 ? (
-            candidateList.map((candidate, indx)=> {
-              <tr key={indx}>
-                <td>Full Name</td>
-                <td>Date Of Birth</td>
-                <td>Years Of Experience</td>
-                <td>department</td>
-                <td>resume</td>
-
+            candidateList.map((candidate, indx)=> (
+              <tr key={indx} style={{color:'gray'}}>
+                <td style={{color:'#242424'}}>{candidate.full_name}</td>
+                <td>{candidate.date_of_birth}</td>
+                <td>{candidate.years_of_experience}</td>
+                <td>{candidate.department}</td>
+                <td>{candidate.resume}</td>
+                <td><DownloadFileModal /></td>
               </tr>
-            })
-          ):
-          (<tr>'no data'</tr>)}
+            ))
+          ):(
+          <tr>
+            <td colSpan="5">No data</td>
+          </tr>
+          )}
           
         </tbody>
 
