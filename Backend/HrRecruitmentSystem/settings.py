@@ -198,6 +198,25 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# STATIC_ROOT = BASE_DIR / 'static'
+# BASE_DIR = Path(file).resolve().parent.parent
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+# AWS_ACCESS_KEY_ID = env.str("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY")
+# AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME")
+# AWS_S3_ENDPOINT_URL = env.str("AWS_S3_ENDPOINT_URL")
+# AWS_S3_MAX_MEMORY_SIZE = env.int("AWS_S3_MAX_MEMORY_SIZE"),
+
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400', # set a cache expiry of 1 day (86400 seconds)
+# }
+
+# # AWS_LOCATION = 'static/media'
+# AWS_DEFAULT_ACL = 'public-read'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

@@ -14,29 +14,32 @@ function CandidateRigistrationModal(props) {
     const [dateOfBirth, setDateOfBirth] = useState('');
     const [yearsOfExperience, setYearsOfExperience] = useState('');
     const [department, setDepartment ] = useState('');
-    const [resume, setResume ] = useState('');
+    const [resume, setResume ] = useState(null);
 
     const [loading , setloading] = useState(false)
 
-    const handleCreateResume = (e) => {
-      var object ={
-        "full_name": fullName,
-        "date_of_birth": dateOfBirth,
-        "years_of_experience": yearsOfExperience,
-        "department": department,
-        "resume": resume,
+    const handleOnChangeFile=(e)=>{
+      const file= e.target.files[0];
+      setResume(file)
     }
-      console.log(object)
+
+    const handleCreateResume = (e) => {
+      const formData = new FormData();
+      formData.append('full_name', fullName );
+      formData.append('date_of_birth', dateOfBirth ) ;
+      formData.append('years_of_experience', yearsOfExperience  );
+      formData.append('department', department);
+      formData.append('resume', resume);
+
         setloading(true)
         e.preventDefault()
         axios.post(`http://127.0.0.1:8000/candidate/create-resume/`,
-        {
-            "full_name": fullName,
-            "date_of_birth": dateOfBirth,
-            "years_of_experience": yearsOfExperience,
-            "department": department,
-            "resume": resume,
-        }) .then((response)=>{
+        formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+        ) .then((response)=>{
             console.log(response)
             toast.success('successfuly applied')
         }) .catch((err)=>{
@@ -53,7 +56,7 @@ function CandidateRigistrationModal(props) {
 
       <Modal show={props.show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title style={{color:'red'}}>Add Your Information</Modal.Title>
+          <Modal.Title style={{color:'#ffb609'}}>Add Your Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <Form>
@@ -86,7 +89,7 @@ function CandidateRigistrationModal(props) {
 
             <Form.Group controlId="yearsOfExperience" className='mb-3' style={{display:'flex'}}>
                 <span style={{margin:'0.5rem'}}>
-                    <i class="far fa-clock"></i>
+                    <i className="far fa-clock"></i>
                 </span>
                 <Form.Control
                 size='sm'
@@ -101,7 +104,7 @@ function CandidateRigistrationModal(props) {
             <Form.Group controlId="department" className='mb-3' style={{display:'flex'}}>
                     {/* <Form.Label>Role</Form.Label> */}
                     <span style={{margin:'0.5rem'}}>
-                        <i class="fas fa-briefcase"></i>
+                        <i className="fas fa-briefcase"></i>
                     </span>
                     <Form.Control
                     as="select" 
@@ -118,13 +121,15 @@ function CandidateRigistrationModal(props) {
 
                 <Form.Group controlId="resume" className='mb-3' style={{display:'flex'}}>
                 <span style={{margin:'0.5rem'}}>
-                    <i class="fa fa-file resume"></i>
+                    <i className="fa fa-file resume"></i>
                 </span>
                 <Form.Control
                 type="file"
-                value={resume}
+                // max={1}
+                multiple={false}
+                // value={resume}
                 placeholder='resume'
-                onChange={(e) => setResume(e.target.value)}
+                onChange={(e) => handleOnChangeFile(e)}
                 />
             </Form.Group>
 
