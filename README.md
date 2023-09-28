@@ -1,5 +1,10 @@
 # HR-ResumeManagrequired
 
+## Author
+
+- Author: Noor Alkhateeb
+- Email: noor.alkhateeb@gmail.com
+
 ## Description
 
 The HR Resume Management System is an API implementation that allows job applicants to register as potential candidates, upload their resumes, and enables HR managers to log in, view the list of candidates, and download their resumes.
