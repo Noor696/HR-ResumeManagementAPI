@@ -28,7 +28,7 @@ class CandidateListView(ListCreateAPIView):
 class CandidateDetailsView(RetrieveUpdateDestroyAPIView):
     queryset = Candidate.objects.all()
     serializer_class = CandidateSerializer
-    # permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminUser]
 
 class CandidateCreateView(CreateAPIView):
     #  (ListCreateAPIView)
