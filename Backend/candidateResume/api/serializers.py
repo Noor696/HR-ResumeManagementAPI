@@ -7,4 +7,3 @@ class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate
         fields = ['id','full_name', 'date_of_birth', 'years_of_experience', 'department', 'resume']
-        # exclude = ['resume']  # Exclude the 'resume' field

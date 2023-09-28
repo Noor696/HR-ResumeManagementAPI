@@ -41,7 +41,7 @@ function CandidateRigistrationModal(props) {
         }
         ) .then((response)=>{
             console.log(response)
-            toast.success('successfuly applied')
+            toast.success('Successfuly applied')
         }) .catch((err)=>{
             console.log(err)
             toast.error('Something went wrong')
@@ -66,6 +66,7 @@ function CandidateRigistrationModal(props) {
                     <i class="fa fa-user"></i>
                 </span>
                 <Form.Control
+                required
                 size='sm'
                 type="text"
                 value={fullName}
@@ -79,6 +80,7 @@ function CandidateRigistrationModal(props) {
                     <i class="fas fa-calendar-alt"></i>
                 </span>
                 <Form.Control
+                required
                 size='sm'
                 type="date"
                 value={dateOfBirth}
@@ -92,6 +94,7 @@ function CandidateRigistrationModal(props) {
                     <i className="far fa-clock"></i>
                 </span>
                 <Form.Control
+                required
                 size='sm'
                 type="number"
                 min = {0}
@@ -107,6 +110,7 @@ function CandidateRigistrationModal(props) {
                         <i className="fas fa-briefcase"></i>
                     </span>
                     <Form.Control
+                    required
                     as="select" 
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)} 
@@ -124,8 +128,8 @@ function CandidateRigistrationModal(props) {
                     <i className="fa fa-file resume"></i>
                 </span>
                 <Form.Control
+                required
                 type="file"
-                // max={1}
                 multiple={false}
                 // value={resume}
                 placeholder='resume'
