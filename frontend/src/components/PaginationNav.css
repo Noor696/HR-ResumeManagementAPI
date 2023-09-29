@@ -1,0 +1,21 @@
+#pageN{
+    color: #ffb609;
+    border: none;
+    background-color: lightgray;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+.activePage {
+    font-weight: bolder;
+}
+
+#previous{
+    color: #ffb609;
+    border: none;
+}
+
+#next{
+    color: #ffb609;
+    border: none;
+    margin-left: 2px;
+}

@@ -40,7 +40,7 @@ function CandidateRigistrationModal(props) {
           },
         }
         ) .then((response)=>{
-            console.log(response)
+            // console.log(response)
             toast.success('Successfuly applied')
         }) .catch((err)=>{
             console.log(err)

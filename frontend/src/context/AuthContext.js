@@ -30,8 +30,8 @@ export const AuthProvider = ({children}) =>{
                 })
         })
         let data = await response.json()
-        console.log('data:', data)
-        console.log('response:', response)
+        // console.log('data:', data)
+        // console.log('response:', response)
         if(response.status === 200){
             toast.success('Login Succesfully')
             setAuthTokens(data) // we will store it in state and in local storage.

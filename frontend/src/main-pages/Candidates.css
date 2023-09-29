@@ -47,3 +47,31 @@
     background-color: gray;
     border-color: gray;
 }
+
+.table-functions{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3rem;
+    gap: 2rem
+}
+
+/* Search & Reset Buttons */
+.searchButton{
+    color: #ffb609;
+    background-color: none;
+    height: 38px;
+    margin-top: -0.9rem;
+    margin-inline: 0.5rem;
+}
+
+.resetButton{
+    color: #ffb609;
+    background-color: none;
+    height: 38px;
+    margin-top: -0.9rem;
+}
+
+.table-label{
+    color: gray;
+    font-size: 12px;
+}

@@ -21,7 +21,7 @@ function DeleteCandidateModal(props) {
       const responce = await axios.delete(`http://127.0.0.1:8000/candidate/${props.candidate.id}/`,
       auth
       );
-      console.log(responce)
+      // console.log(responce)
       setLoadingDelete(false)
       toast.success('Successfuly Deleted')
       props.setReloadData((current)=>!current)
